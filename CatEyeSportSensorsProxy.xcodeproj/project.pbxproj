@@ -14,6 +14,13 @@
 		555AB7811AC459FD005F7A46 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 555AB7801AC459FD005F7A46 /* Images.xcassets */; };
 		555AB7841AC459FD005F7A46 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 555AB7821AC459FD005F7A46 /* LaunchScreen.xib */; };
 		555AB7901AC459FD005F7A46 /* CatEyeSportSensorsProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 555AB78F1AC459FD005F7A46 /* CatEyeSportSensorsProxyTests.m */; };
+		555AB79C1AC46149005F7A46 /* CSSCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 555AB79B1AC46149005F7A46 /* CSSCentralManager.m */; };
+		55C0F7C61AC4872200FC9F7A /* CSSBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C0F7C51AC4872200FC9F7A /* CSSBaseService.m */; };
+		55C0F7C91AC48ADA00FC9F7A /* CSSCSCService.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C0F7C81AC48ADA00FC9F7A /* CSSCSCService.m */; };
+		55C0F7CC1AC48B1C00FC9F7A /* CSSHRMService.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C0F7CB1AC48B1C00FC9F7A /* CSSHRMService.m */; };
+		55C0F7CF1AC48FA800FC9F7A /* CSSCSCSensor.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C0F7CE1AC48FA800FC9F7A /* CSSCSCSensor.m */; };
+		55C0F7D21AC491AE00FC9F7A /* CSSHRMSensor.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C0F7D11AC491AE00FC9F7A /* CSSHRMSensor.m */; };
+		C676D4D7D1F73C54165C5FA3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC336E16ABEC4E79B316C31 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1DC336E16ABEC4E79B316C31 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		555AB7701AC459FD005F7A46 /* CatEyeSportSensorsProxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatEyeSportSensorsProxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		555AB7741AC459FD005F7A46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		555AB7751AC459FD005F7A46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +48,20 @@
 		555AB7891AC459FD005F7A46 /* CatEyeSportSensorsProxyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatEyeSportSensorsProxyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		555AB78E1AC459FD005F7A46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		555AB78F1AC459FD005F7A46 /* CatEyeSportSensorsProxyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CatEyeSportSensorsProxyTests.m; sourceTree = "<group>"; };
+		555AB79A1AC46149005F7A46 /* CSSCentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSCentralManager.h; path = Utils/CSSCentralManager.h; sourceTree = "<group>"; };
+		555AB79B1AC46149005F7A46 /* CSSCentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSCentralManager.m; path = Utils/CSSCentralManager.m; sourceTree = "<group>"; };
+		55C0F7C41AC4872200FC9F7A /* CSSBaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSBaseService.h; path = Utils/CSSBaseService.h; sourceTree = "<group>"; };
+		55C0F7C51AC4872200FC9F7A /* CSSBaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSBaseService.m; path = Utils/CSSBaseService.m; sourceTree = "<group>"; };
+		55C0F7C71AC48ADA00FC9F7A /* CSSCSCService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSCSCService.h; path = Utils/CSSCSCService.h; sourceTree = "<group>"; };
+		55C0F7C81AC48ADA00FC9F7A /* CSSCSCService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSCSCService.m; path = Utils/CSSCSCService.m; sourceTree = "<group>"; };
+		55C0F7CA1AC48B1C00FC9F7A /* CSSHRMService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSHRMService.h; path = Utils/CSSHRMService.h; sourceTree = "<group>"; };
+		55C0F7CB1AC48B1C00FC9F7A /* CSSHRMService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSHRMService.m; path = Utils/CSSHRMService.m; sourceTree = "<group>"; };
+		55C0F7CD1AC48FA800FC9F7A /* CSSCSCSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSCSCSensor.h; path = Utils/CSSCSCSensor.h; sourceTree = "<group>"; };
+		55C0F7CE1AC48FA800FC9F7A /* CSSCSCSensor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSCSCSensor.m; path = Utils/CSSCSCSensor.m; sourceTree = "<group>"; };
+		55C0F7D01AC491AE00FC9F7A /* CSSHRMSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSHRMSensor.h; path = Utils/CSSHRMSensor.h; sourceTree = "<group>"; };
+		55C0F7D11AC491AE00FC9F7A /* CSSHRMSensor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSHRMSensor.m; path = Utils/CSSHRMSensor.m; sourceTree = "<group>"; };
+		7E9848AADFAA27CC5F7EC872 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D57F356EC9200D497B64C66A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C676D4D7D1F73C54165C5FA3 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +89,8 @@
 				555AB7721AC459FD005F7A46 /* CatEyeSportSensorsProxy */,
 				555AB78C1AC459FD005F7A46 /* CatEyeSportSensorsProxyTests */,
 				555AB7711AC459FD005F7A46 /* Products */,
+				7B30A5438A3FD5F93D32C12A /* Pods */,
+				C62BC1BF0F1DA7BF42AA0C96 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +106,7 @@
 		555AB7721AC459FD005F7A46 /* CatEyeSportSensorsProxy */ = {
 			isa = PBXGroup;
 			children = (
+				555AB79D1AC4615E005F7A46 /* Utils */,
 				555AB7771AC459FD005F7A46 /* AppDelegate.h */,
 				555AB7781AC459FD005F7A46 /* AppDelegate.m */,
 				555AB77A1AC459FD005F7A46 /* ViewController.h */,
@@ -119,6 +145,42 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		555AB79D1AC4615E005F7A46 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				555AB79A1AC46149005F7A46 /* CSSCentralManager.h */,
+				555AB79B1AC46149005F7A46 /* CSSCentralManager.m */,
+				55C0F7C41AC4872200FC9F7A /* CSSBaseService.h */,
+				55C0F7C51AC4872200FC9F7A /* CSSBaseService.m */,
+				55C0F7C71AC48ADA00FC9F7A /* CSSCSCService.h */,
+				55C0F7C81AC48ADA00FC9F7A /* CSSCSCService.m */,
+				55C0F7CA1AC48B1C00FC9F7A /* CSSHRMService.h */,
+				55C0F7CB1AC48B1C00FC9F7A /* CSSHRMService.m */,
+				55C0F7CD1AC48FA800FC9F7A /* CSSCSCSensor.h */,
+				55C0F7CE1AC48FA800FC9F7A /* CSSCSCSensor.m */,
+				55C0F7D01AC491AE00FC9F7A /* CSSHRMSensor.h */,
+				55C0F7D11AC491AE00FC9F7A /* CSSHRMSensor.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		7B30A5438A3FD5F93D32C12A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E9848AADFAA27CC5F7EC872 /* Pods.debug.xcconfig */,
+				D57F356EC9200D497B64C66A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C62BC1BF0F1DA7BF42AA0C96 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DC336E16ABEC4E79B316C31 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,9 +188,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 555AB7931AC459FD005F7A46 /* Build configuration list for PBXNativeTarget "CatEyeSportSensorsProxy" */;
 			buildPhases = (
+				3194D5319B5AB1DD395FE107 /* Check Pods Manifest.lock */,
 				555AB76C1AC459FD005F7A46 /* Sources */,
 				555AB76D1AC459FD005F7A46 /* Frameworks */,
 				555AB76E1AC459FD005F7A46 /* Resources */,
+				F68AF30DF7EA5C9741D61E20 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -214,14 +278,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3194D5319B5AB1DD395FE107 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F68AF30DF7EA5C9741D61E20 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		555AB76C1AC459FD005F7A46 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				555AB77C1AC459FD005F7A46 /* ViewController.m in Sources */,
+				55C0F7C91AC48ADA00FC9F7A /* CSSCSCService.m in Sources */,
+				55C0F7D21AC491AE00FC9F7A /* CSSHRMSensor.m in Sources */,
+				55C0F7C61AC4872200FC9F7A /* CSSBaseService.m in Sources */,
+				55C0F7CC1AC48B1C00FC9F7A /* CSSHRMService.m in Sources */,
 				555AB7791AC459FD005F7A46 /* AppDelegate.m in Sources */,
+				55C0F7CF1AC48FA800FC9F7A /* CSSCSCSensor.m in Sources */,
 				555AB7761AC459FD005F7A46 /* main.m in Sources */,
+				555AB79C1AC46149005F7A46 /* CSSCentralManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +446,7 @@
 		};
 		555AB7941AC459FD005F7A46 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E9848AADFAA27CC5F7EC872 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CatEyeSportSensorsProxy/Info.plist;
@@ -353,6 +457,7 @@
 		};
 		555AB7951AC459FD005F7A46 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D57F356EC9200D497B64C66A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CatEyeSportSensorsProxy/Info.plist;
@@ -414,6 +519,7 @@
 				555AB7951AC459FD005F7A46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		555AB7961AC459FD005F7A46 /* Build configuration list for PBXNativeTarget "CatEyeSportSensorsProxyTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +528,7 @@
 				555AB7981AC459FD005F7A46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
