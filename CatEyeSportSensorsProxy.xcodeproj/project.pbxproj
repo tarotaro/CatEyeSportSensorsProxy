@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		555AB7761AC459FD005F7A46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 555AB7751AC459FD005F7A46 /* main.m */; };
+		555AB7791AC459FD005F7A46 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 555AB7781AC459FD005F7A46 /* AppDelegate.m */; };
+		555AB77C1AC459FD005F7A46 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 555AB77B1AC459FD005F7A46 /* ViewController.m */; };
+		555AB77F1AC459FD005F7A46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 555AB77D1AC459FD005F7A46 /* Main.storyboard */; };
+		555AB7811AC459FD005F7A46 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 555AB7801AC459FD005F7A46 /* Images.xcassets */; };
+		555AB7841AC459FD005F7A46 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 555AB7821AC459FD005F7A46 /* LaunchScreen.xib */; };
+		555AB7901AC459FD005F7A46 /* CatEyeSportSensorsProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 555AB78F1AC459FD005F7A46 /* CatEyeSportSensorsProxyTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		555AB78A1AC459FD005F7A46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 555AB7681AC459FD005F7A46 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 555AB76F1AC459FD005F7A46;
+			remoteInfo = CatEyeSportSensorsProxy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		555AB7701AC459FD005F7A46 /* CatEyeSportSensorsProxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatEyeSportSensorsProxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		555AB7741AC459FD005F7A46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		555AB7751AC459FD005F7A46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		555AB7771AC459FD005F7A46 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		555AB7781AC459FD005F7A46 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		555AB77A1AC459FD005F7A46 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		555AB77B1AC459FD005F7A46 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		555AB77E1AC459FD005F7A46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		555AB7801AC459FD005F7A46 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		555AB7831AC459FD005F7A46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		555AB7891AC459FD005F7A46 /* CatEyeSportSensorsProxyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatEyeSportSensorsProxyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		555AB78E1AC459FD005F7A46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		555AB78F1AC459FD005F7A46 /* CatEyeSportSensorsProxyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CatEyeSportSensorsProxyTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		555AB76D1AC459FD005F7A46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		555AB7861AC459FD005F7A46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		555AB7671AC459FD005F7A46 = {
+			isa = PBXGroup;
+			children = (
+				555AB7721AC459FD005F7A46 /* CatEyeSportSensorsProxy */,
+				555AB78C1AC459FD005F7A46 /* CatEyeSportSensorsProxyTests */,
+				555AB7711AC459FD005F7A46 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		555AB7711AC459FD005F7A46 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				555AB7701AC459FD005F7A46 /* CatEyeSportSensorsProxy.app */,
+				555AB7891AC459FD005F7A46 /* CatEyeSportSensorsProxyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		555AB7721AC459FD005F7A46 /* CatEyeSportSensorsProxy */ = {
+			isa = PBXGroup;
+			children = (
+				555AB7771AC459FD005F7A46 /* AppDelegate.h */,
+				555AB7781AC459FD005F7A46 /* AppDelegate.m */,
+				555AB77A1AC459FD005F7A46 /* ViewController.h */,
+				555AB77B1AC459FD005F7A46 /* ViewController.m */,
+				555AB77D1AC459FD005F7A46 /* Main.storyboard */,
+				555AB7801AC459FD005F7A46 /* Images.xcassets */,
+				555AB7821AC459FD005F7A46 /* LaunchScreen.xib */,
+				555AB7731AC459FD005F7A46 /* Supporting Files */,
+			);
+			path = CatEyeSportSensorsProxy;
+			sourceTree = "<group>";
+		};
+		555AB7731AC459FD005F7A46 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				555AB7741AC459FD005F7A46 /* Info.plist */,
+				555AB7751AC459FD005F7A46 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		555AB78C1AC459FD005F7A46 /* CatEyeSportSensorsProxyTests */ = {
+			isa = PBXGroup;
+			children = (
+				555AB78F1AC459FD005F7A46 /* CatEyeSportSensorsProxyTests.m */,
+				555AB78D1AC459FD005F7A46 /* Supporting Files */,
+			);
+			path = CatEyeSportSensorsProxyTests;
+			sourceTree = "<group>";
+		};
+		555AB78D1AC459FD005F7A46 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				555AB78E1AC459FD005F7A46 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		555AB76F1AC459FD005F7A46 /* CatEyeSportSensorsProxy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 555AB7931AC459FD005F7A46 /* Build configuration list for PBXNativeTarget "CatEyeSportSensorsProxy" */;
+			buildPhases = (
+				555AB76C1AC459FD005F7A46 /* Sources */,
+				555AB76D1AC459FD005F7A46 /* Frameworks */,
+				555AB76E1AC459FD005F7A46 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CatEyeSportSensorsProxy;
+			productName = CatEyeSportSensorsProxy;
+			productReference = 555AB7701AC459FD005F7A46 /* CatEyeSportSensorsProxy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		555AB7881AC459FD005F7A46 /* CatEyeSportSensorsProxyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 555AB7961AC459FD005F7A46 /* Build configuration list for PBXNativeTarget "CatEyeSportSensorsProxyTests" */;
+			buildPhases = (
+				555AB7851AC459FD005F7A46 /* Sources */,
+				555AB7861AC459FD005F7A46 /* Frameworks */,
+				555AB7871AC459FD005F7A46 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				555AB78B1AC459FD005F7A46 /* PBXTargetDependency */,
+			);
+			name = CatEyeSportSensorsProxyTests;
+			productName = CatEyeSportSensorsProxyTests;
+			productReference = 555AB7891AC459FD005F7A46 /* CatEyeSportSensorsProxyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		555AB7681AC459FD005F7A46 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "中村太郎";
+				TargetAttributes = {
+					555AB76F1AC459FD005F7A46 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					555AB7881AC459FD005F7A46 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 555AB76F1AC459FD005F7A46;
+					};
+				};
+			};
+			buildConfigurationList = 555AB76B1AC459FD005F7A46 /* Build configuration list for PBXProject "CatEyeSportSensorsProxy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 555AB7671AC459FD005F7A46;
+			productRefGroup = 555AB7711AC459FD005F7A46 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				555AB76F1AC459FD005F7A46 /* CatEyeSportSensorsProxy */,
+				555AB7881AC459FD005F7A46 /* CatEyeSportSensorsProxyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		555AB76E1AC459FD005F7A46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				555AB77F1AC459FD005F7A46 /* Main.storyboard in Resources */,
+				555AB7841AC459FD005F7A46 /* LaunchScreen.xib in Resources */,
+				555AB7811AC459FD005F7A46 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		555AB7871AC459FD005F7A46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		555AB76C1AC459FD005F7A46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				555AB77C1AC459FD005F7A46 /* ViewController.m in Sources */,
+				555AB7791AC459FD005F7A46 /* AppDelegate.m in Sources */,
+				555AB7761AC459FD005F7A46 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		555AB7851AC459FD005F7A46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				555AB7901AC459FD005F7A46 /* CatEyeSportSensorsProxyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		555AB78B1AC459FD005F7A46 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 555AB76F1AC459FD005F7A46 /* CatEyeSportSensorsProxy */;
+			targetProxy = 555AB78A1AC459FD005F7A46 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		555AB77D1AC459FD005F7A46 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				555AB77E1AC459FD005F7A46 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		555AB7821AC459FD005F7A46 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				555AB7831AC459FD005F7A46 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		555AB7911AC459FD005F7A46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		555AB7921AC459FD005F7A46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		555AB7941AC459FD005F7A46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CatEyeSportSensorsProxy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		555AB7951AC459FD005F7A46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CatEyeSportSensorsProxy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		555AB7971AC459FD005F7A46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CatEyeSportSensorsProxyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CatEyeSportSensorsProxy.app/CatEyeSportSensorsProxy";
+			};
+			name = Debug;
+		};
+		555AB7981AC459FD005F7A46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CatEyeSportSensorsProxyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CatEyeSportSensorsProxy.app/CatEyeSportSensorsProxy";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		555AB76B1AC459FD005F7A46 /* Build configuration list for PBXProject "CatEyeSportSensorsProxy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				555AB7911AC459FD005F7A46 /* Debug */,
+				555AB7921AC459FD005F7A46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		555AB7931AC459FD005F7A46 /* Build configuration list for PBXNativeTarget "CatEyeSportSensorsProxy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				555AB7941AC459FD005F7A46 /* Debug */,
+				555AB7951AC459FD005F7A46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		555AB7961AC459FD005F7A46 /* Build configuration list for PBXNativeTarget "CatEyeSportSensorsProxyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				555AB7971AC459FD005F7A46 /* Debug */,
+				555AB7981AC459FD005F7A46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 555AB7681AC459FD005F7A46 /* Project object */;
+}
