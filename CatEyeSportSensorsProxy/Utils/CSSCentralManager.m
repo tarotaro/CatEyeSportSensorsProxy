@@ -23,7 +23,8 @@ static CSSCentralManager *sharedCentralManager;
         sharedCentralManager = [[super allocWithZone:NULL] initWithKnownPeripheralNames:nameList
                                                                                   queue:queue
                                                                    useStoredPeripherals:YES
-                                                                               delegate:delegate];
+                                                                             delegate:delegate];
+        sharedCentralManager.peripheralDelegate = delegate;
     }
     return sharedCentralManager;
     
@@ -77,13 +78,17 @@ static CSSCentralManager *sharedCentralManager;
                                                                             central:self
                                                                              baseHi:0xF000000004514000
                                                                              baseLo:0xB000000000000000];
-                    
+                    [sensor connect];
                     [self addPeripheral:sensor];
                 }
                 break;
             }
         }
     }
+}
+
+- (void)valueChange:(NSString *)valueType number:(NSNumber *)number{
+    [self.peripheralDelegate peripheralValueChange:valueType number:number];
 }
 
 - (void)managerPoweredOnHandler {

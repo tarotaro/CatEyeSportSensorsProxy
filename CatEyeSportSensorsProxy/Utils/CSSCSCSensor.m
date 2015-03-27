@@ -10,6 +10,7 @@
 #import "CSSBaseService.h"
 #import "YMSCBCharacteristic.h"
 #import "YMSCBDescriptor.h"
+#import "CSSCentralManager.h"
 
 @implementation CSSCSCSensor
 - (instancetype)initWithPeripheral:(CBPeripheral *)peripheral
@@ -52,6 +53,7 @@
                     for (NSString *key in chDict) {
                         YMSCBCharacteristic *ct = chDict[key];
                         //NSLog(@"%@ %@ %@", ct, ct.cbCharacteristic, ct.uuid);
+                        [self.cbPeripheral setNotifyValue:YES forCharacteristic:ct.cbCharacteristic];
                         
                         [ct discoverDescriptorsWithBlock:^(NSArray *ydescriptors, NSError *error) {
                             if (error) {
@@ -66,5 +68,11 @@
             }
         }];
     }];
+}
+
+- (void)peripheral:(CBPeripheral *)aPeripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
+    
+    [(CSSCentralManager*)self.central valueChange:@"CD" number:[NSNumber numberWithInt:3]];
+    [(CSSCentralManager*)self.central valueChange:@"SPEED" number:[NSNumber numberWithInt:3]];
 }
 @end
