@@ -60,6 +60,7 @@
 }
 
 - (NSDictionary *)sensorValues{
+    if(self.keyValue == nil) return nil;
     return @{ @"keyValue": self.keyValue };
 }
 @end

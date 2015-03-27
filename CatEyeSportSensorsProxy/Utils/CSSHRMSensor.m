@@ -75,4 +75,8 @@
 }
 
 
+- ( CSSHRMService *)hrmmeter {
+    return self.serviceDict[@"HRM"];
+}
+
 @end

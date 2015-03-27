@@ -71,6 +71,7 @@
 }
 
 - (NSDictionary *)sensorValues{
+    if(self.keyValue == nil) return nil;
     return @{ @"BPM": self.keyValue };
 }
 @end

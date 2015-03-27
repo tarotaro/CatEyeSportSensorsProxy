@@ -8,12 +8,15 @@
 
 #import "ViewController.h"
 #import "CSSCentralManager.h"
+#import "CSSHRMSensor.h"
+#import "CSSHRMService.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *speedMeter;
 @property (strong, nonatomic) IBOutlet UILabel *rotationMeter;
 @property (strong, nonatomic) IBOutlet UILabel *heartMeter;
 @property (strong, nonatomic) IBOutlet UIButton *scanButton;
+@property (nonatomic) NSInteger peripheralCount;
 
 @end
 
@@ -29,6 +32,11 @@
                      forKeyPath:@"isScanning"
                         options:NSKeyValueObservingOptionNew
                         context:NULL];
+    self.peripheralCount = 0;
+    
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0/60 target:self selector:@selector(meterUpdate:) userInfo:nil repeats:YES];
+    
+    [timer fire];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,6 +46,7 @@
 
 
 -(void)scanButtonDown:(id)sender{
+    self.peripheralCount = 0;
     CSSCentralManager *centralManager = [CSSCentralManager sharedService];
     
     if (centralManager.isScanning == NO) {
@@ -76,6 +85,21 @@
     
 }
 
+-(void)meterUpdate:(NSTimer *)timer{
+    CSSCentralManager *centralManager = [CSSCentralManager sharedService];
+
+    for(int i = 0;i<self.peripheralCount;i++){
+        YMSCBPeripheral *per= [centralManager peripheralAtIndex:i];
+        if([per isKindOfClass:CSSHRMSensor.class]){
+            CSSHRMSensor *sen = (CSSHRMSensor *)per;
+            if(sen.hrmmeter.sensorValues != nil ){
+                self.heartMeter.text = [NSString stringWithFormat:@"%@ BPM",sen.hrmmeter.sensorValues[@"BPM"]];
+            }
+        }
+    }
+
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     
     CSSCentralManager *centralManager = [CSSCentralManager sharedService];
@@ -94,13 +118,19 @@
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error{
 }
 
+- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral{
+    self.peripheralCount++;
+}
+
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
+    
 }
 
 - (void)centralManager:(CBCentralManager *)central didRetrievePeripherals:(NSArray *)peripherals {
 }
 
 - (void)centralManager:(CBCentralManager *)central didRetrieveConnectedPeripherals:(NSArray *)peripherals {
+    
 }
 
 @end
