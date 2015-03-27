@@ -8,6 +8,7 @@
 
 #import "CSSHRMSensor.h"
 #import "CSSBaseService.h"
+#import "CSSHRMService.h"
 #import "YMSCBCharacteristic.h"
 #import "YMSCBDescriptor.h"
 #import "CSSCentralManager.h"
@@ -21,12 +22,15 @@
     self = [super initWithPeripheral:peripheral central:owner baseHi:hi baseLo:lo];
     
     if (self) {
+        CSSHRMService *hrm = [[CSSHRMService alloc] initWithName:@"HRM" parent:self baseHi:hi baseLo:lo serviceOffset:0];
         
-        
-        self.serviceDict = @{};
+        self.serviceDict = @{@"HRM":hrm};
     }
     return self;
     
+}
+
+- (void)defaultConnectionHandler {
 }
 
 - (void)connect {
@@ -53,7 +57,7 @@
                     for (NSString *key in chDict) {
                         YMSCBCharacteristic *ct = chDict[key];
                         //NSLog(@"%@ %@ %@", ct, ct.cbCharacteristic, ct.uuid);
-                        [self.cbPeripheral setNotifyValue:YES forCharacteristic:ct.cbCharacteristic];
+                        [ct setNotifyValue:YES withBlock:nil];
                         
                         [ct discoverDescriptorsWithBlock:^(NSArray *ydescriptors, NSError *error) {
                             if (error) {
@@ -70,9 +74,5 @@
     }];
 }
 
-- (void)peripheral:(CBPeripheral *)aPeripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
-    
-    [(CSSCentralManager*)self.central valueChange:@"HRM" number:[NSNumber numberWithInt:3]];
-}
 
 @end

@@ -53,7 +53,7 @@ static CSSCentralManager *sharedCentralManager;
                                    }
                                    
                                    NSLog(@"DISCOVERED: %@, %@, %@ db", peripheral, peripheral.name, RSSI);
-                                   [this handleFoundPeripheral:peripheral];
+                                   [this foundPeripheral:peripheral];
                                }];
     
 
@@ -61,6 +61,9 @@ static CSSCentralManager *sharedCentralManager;
 }
 
 -(void)handleFoundPeripheral:(CBPeripheral *)peripheral{
+}
+
+-(void)foundPeripheral:(CBPeripheral *)peripheral{
     YMSCBPeripheral *yp = [self findPeripheral:peripheral];
     
     if (yp == nil) {

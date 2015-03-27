@@ -29,7 +29,15 @@
                  serviceOffset:serviceOffset];
     
     if (self) {
-        [self addCharacteristic:@"data" withAddress:0];
+        self.uuid = [CBUUID UUIDWithString:@"180D"];
+        YMSCBCharacteristic *yc;
+        
+        yc = [[YMSCBCharacteristic alloc] initWithName:@"rate"
+                                                parent:self.parent
+                                                  uuid:[CBUUID UUIDWithString:@"2A37"]
+                                                offset:0];
+        
+        self.characteristicDict[@"rate"] = yc;
     }
     return self;
 }
@@ -39,25 +47,30 @@
         return;
     }
     
-    if ([yc.name isEqualToString:@"data"]) {
+    if ([yc.name isEqualToString:@"rate"]) {
         NSData *data = yc.cbCharacteristic.value;
+        const uint8_t *reportData = [data bytes];
+        uint16_t bpm = 0;
         
-        char val[data.length];
-        [data getBytes:&val length:data.length];
+        if ((reportData[0] & 0x01) == 0) {
+            // uint8 bpm
+            bpm = reportData[1];
+        } else {
+            // uint16 bpm
+            bpm = CFSwapInt16LittleToHost(*(uint16_t *)(&reportData[1]));
+        }
         
-        
-        int16_t value = val[0];
-        
+        NSLog(@"%d",bpm);
         __weak CSSHRMService *this = self;
         _YMS_PERFORM_ON_MAIN_THREAD(^{
             [self willChangeValueForKey:@"sensorValues"];
-            this.keyValue = [NSNumber numberWithInt:value];
+            this.keyValue = [NSNumber numberWithInt:bpm];
             [self didChangeValueForKey:@"sensorValues"];
         });
     }
 }
 
 - (NSDictionary *)sensorValues{
-    return @{ @"keyValue": self.keyValue };
+    return @{ @"BPM": self.keyValue };
 }
 @end
