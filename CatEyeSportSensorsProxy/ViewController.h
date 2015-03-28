@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CSSCentralManager.h"
 
-@interface ViewController : UIViewController <CBCentralManagerDelegate,CBPeripheralDelegate>
+@interface ViewController : UIViewController <CBCentralManagerDelegate,CBPeripheralDelegate,NSStreamDelegate>
 
 
 @end
