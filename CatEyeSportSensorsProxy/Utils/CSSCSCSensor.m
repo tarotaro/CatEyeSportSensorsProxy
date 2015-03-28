@@ -11,6 +11,7 @@
 #import "YMSCBCharacteristic.h"
 #import "YMSCBDescriptor.h"
 #import "CSSCentralManager.h"
+#import "CSSCSCService.h"
 
 @implementation CSSCSCSensor
 - (instancetype)initWithPeripheral:(CBPeripheral *)peripheral
@@ -21,9 +22,10 @@
     self = [super initWithPeripheral:peripheral central:owner baseHi:hi baseLo:lo];
     
     if (self) {
-       
+        CSSCSCService *csc = [[CSSCSCService alloc] initWithName:@"CSC" parent:self baseHi:hi baseLo:lo serviceOffset:0];
         
-        self.serviceDict = @{};
+        self.serviceDict = @{@"CSC":csc};
+        
     }
     return self;
     
@@ -49,11 +51,15 @@
             for (YMSCBService *service in yservices) {
                 
                 __weak CSSBaseService *thisService = (CSSBaseService *)service;
+                if([service isKindOfClass:CSSCSCService.class]){
+                    CSSCSCService *ser = (CSSCSCService *)service;
+                    [ser valiableInitialize];
+                }
                 [service discoverCharacteristics:[service characteristics] withBlock:^(NSDictionary *chDict, NSError *error) {
                     for (NSString *key in chDict) {
                         YMSCBCharacteristic *ct = chDict[key];
                         //NSLog(@"%@ %@ %@", ct, ct.cbCharacteristic, ct.uuid);
-                        [self.cbPeripheral setNotifyValue:YES forCharacteristic:ct.cbCharacteristic];
+                        [ct setNotifyValue:YES withBlock:nil];
                         
                         [ct discoverDescriptorsWithBlock:^(NSArray *ydescriptors, NSError *error) {
                             if (error) {
@@ -70,9 +76,7 @@
     }];
 }
 
-- (void)peripheral:(CBPeripheral *)aPeripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
-    
-    [(CSSCentralManager*)self.central valueChange:@"CD" number:[NSNumber numberWithInt:3]];
-    [(CSSCentralManager*)self.central valueChange:@"SPEED" number:[NSNumber numberWithInt:3]];
+- ( CSSCSCService *)cscmeter {
+    return self.serviceDict[@"CSC"];
 }
 @end

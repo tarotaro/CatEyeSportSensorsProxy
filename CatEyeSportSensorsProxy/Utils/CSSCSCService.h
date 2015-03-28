@@ -10,5 +10,7 @@
 
 @interface CSSCSCService : CSSBaseService
 @property (nonatomic, strong, readonly) NSDictionary *sensorValues;
-@property (nonatomic, strong, readonly) NSNumber *keyValue;
+@property (nonatomic, strong, readonly) NSNumber *keyCadence;
+@property (nonatomic, strong, readonly) NSNumber *keySpeed;
+- (void)valiableInitialize;
 @end

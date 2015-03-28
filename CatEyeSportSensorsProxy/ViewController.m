@@ -10,6 +10,8 @@
 #import "CSSCentralManager.h"
 #import "CSSHRMSensor.h"
 #import "CSSHRMService.h"
+#import "CSSCSCSensor.h"
+#import "CSSCSCService.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *speedMeter;
@@ -94,6 +96,12 @@
             CSSHRMSensor *sen = (CSSHRMSensor *)per;
             if(sen.hrmmeter.sensorValues != nil ){
                 self.heartMeter.text = [NSString stringWithFormat:@"%@ BPM",sen.hrmmeter.sensorValues[@"BPM"]];
+            }
+        }else if([per isKindOfClass:CSSCSCSensor.class]){
+            CSSCSCSensor *sen = (CSSCSCSensor *)per;
+            if(sen.cscmeter.sensorValues != nil){
+                self.rotationMeter.text = [NSString stringWithFormat:@"%@ RPM",sen.cscmeter.sensorValues[@"keyCadence"]];
+                self.speedMeter.text = [NSString stringWithFormat:@"%.1f km/h",[sen.cscmeter.sensorValues[@"keySpeed"] floatValue]];
             }
         }
     }

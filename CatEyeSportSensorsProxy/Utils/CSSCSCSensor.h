@@ -8,6 +8,8 @@
 
 #import "YMSCBPeripheral.h"
 
-@interface CSSCSCSensor : YMSCBPeripheral
+@class CSSCSCService;
 
+@interface CSSCSCSensor : YMSCBPeripheral
+@property (nonatomic, readonly) CSSCSCService *cscmeter;
 @end

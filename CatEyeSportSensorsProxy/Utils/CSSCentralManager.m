@@ -74,7 +74,7 @@ static CSSCentralManager *sharedCentralManager;
                                                                            central:self
                                                                             baseHi:0xF000000004514000
                                                                             baseLo:0xB000000000000000];
-                    
+                    [sensor connect];
                     [self addPeripheral:sensor];
                 }else if([pname isEqualToString:@"CATEYE_HRM"]){
                     CSSHRMSensor *sensor = [[CSSHRMSensor alloc] initWithPeripheral:peripheral
