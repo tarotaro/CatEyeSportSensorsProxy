@@ -17,12 +17,14 @@
 #import <netinet/in.h>
 #import <arpa/inet.h>
 #import <ifaddrs.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *speedMeter;
 @property (strong, nonatomic) IBOutlet UILabel *rotationMeter;
 @property (strong, nonatomic) IBOutlet UILabel *heartMeter;
 @property (strong, nonatomic) IBOutlet UILabel *ipAddress;
+@property (strong, nonatomic) IBOutlet UILabel *direction;
 @property (strong, nonatomic) IBOutlet UIButton *scanButton;
 @property (nonatomic) NSInteger peripheralCount;
 
@@ -34,6 +36,9 @@
 @property (nonatomic) float speedMeterValue;
 @property (nonatomic) int rotationMeterValue;
 @property (nonatomic) int heartMeterValue;
+@property (nonatomic) int directionValue;
+
+@property (nonatomic,strong) CLLocationManager *locationManager;
 
 @end
 
@@ -64,6 +69,12 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
     [timer fire];
     [self networkInitilize];
     self.ipAddress.text = [self getIPAddress];
+
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.headingFilter = kCLHeadingFilterNone;
+    self.locationManager.headingOrientation = CLDeviceOrientationPortrait;
+    [self.locationManager startUpdatingHeading];
     
 }
 
@@ -125,6 +136,13 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
     }
     freeifaddrs(interfaces);
     return address;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
+{
+    CLLocationDirection heading = newHeading.magneticHeading;
+    self.direction.text = [NSString stringWithFormat:@"%d", (int)heading];
+    self.directionValue = (int)heading;
 }
 
 static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDataRef address, const void *data, void *pInfo){
@@ -254,6 +272,11 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
         case 2:
             valuef = self.speedMeterValue;
             sprintf(buffer,"%f",valuef);
+            [self.outputStream write:(const uint8_t *)&buffer maxLength:1024];
+            break;
+        case 3:
+            value = self.directionValue;
+            sprintf(buffer,"%d",value);
             [self.outputStream write:(const uint8_t *)&buffer maxLength:1024];
             break;
         default:

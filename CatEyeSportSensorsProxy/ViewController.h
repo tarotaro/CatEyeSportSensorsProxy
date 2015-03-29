@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CSSCentralManager.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface ViewController : UIViewController <CBCentralManagerDelegate,CBPeripheralDelegate,NSStreamDelegate>
+@interface ViewController : UIViewController <CBCentralManagerDelegate,CBPeripheralDelegate,NSStreamDelegate,CLLocationManagerDelegate>
 
 
 @end
