@@ -252,36 +252,22 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
         default:
             NSLog(@"Unknown event");
     }
+    
+    if(sendType == -1)return;
 
-    int value;
-    float valuef;
-    NSLog(@"sendType %d",sendType);
-    uint8_t buffer[1024];
-    memset(buffer,0,1024);
-    switch(sendType){
-        case 0:
-            value = self.heartMeterValue;
-            sprintf(buffer,"%d",value);
-            [self.outputStream write:(const uint8_t *)buffer maxLength:1024];
-            break;
-        case 1:
-            value = self.rotationMeterValue;
-            sprintf(buffer,"%d",value);
-            [self.outputStream write:(const uint8_t *)&buffer maxLength:1024];
-            break;
-        case 2:
-            valuef = self.speedMeterValue;
-            sprintf(buffer,"%f",valuef);
-            [self.outputStream write:(const uint8_t *)&buffer maxLength:1024];
-            break;
-        case 3:
-            value = self.directionValue;
-            sprintf(buffer,"%d",value);
-            [self.outputStream write:(const uint8_t *)&buffer maxLength:1024];
-            break;
-        default:
-            break;
-    }
+    int value1,value2,value4;
+    float value3f;
+    uint8_t buffer[2048];
+    memset(buffer,0,2048);
+
+    value1 = self.heartMeterValue;
+    value2 = self.rotationMeterValue;
+    value3f = self.speedMeterValue;
+    value4 = self.directionValue;
+    
+    sprintf(buffer,"%d,%d,%f,%d",value1,value2,value3f,value4);
+    [self.outputStream write:(const uint8_t *)buffer maxLength:2048];
+
 }
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
