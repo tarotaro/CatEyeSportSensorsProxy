@@ -44,6 +44,7 @@
 
 CFSocketContext ctx;
 CFSocketRef     socketRef;
+CFRunLoopSourceRef sourceRef;
 
 static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDataRef address, const void *data, void *pInfo);
 
@@ -78,6 +79,21 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
     
 }
 
+- (void)dealloc{
+    [self.inputStream close];
+    [self.outputStream close];
+    if(socketRef != nil){
+        CFSocketInvalidate(socketRef);
+        CFRelease(socketRef);
+        socketRef = nil;
+    }
+    socketRef = nil;
+    if(sourceRef != nil){
+        CFRunLoopRemoveSource(CFRunLoopGetCurrent(), sourceRef, kCFRunLoopDefaultMode);
+        sourceRef = nil;
+    }
+}
+
 -(void)networkInitilize{
     ctx.version = 0;
     ctx.info = (__bridge void*)self;
@@ -92,7 +108,8 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
                                               IPPROTO_TCP,
                                               kCFSocketAcceptCallBack,
                                               (CFSocketCallBack)myHandleConnect, &ctx);
-    
+    if(myipv4cfsock == nil)return;
+    socketRef = myipv4cfsock;
     struct sockaddr_in sin;
     memset(&sin, 0, sizeof(sin));
     sin.sin_len = sizeof(sin);
@@ -103,18 +120,25 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
                                     kCFAllocatorDefault,
                                     (UInt8 *)&sin,
                                     sizeof(sin));
-    CFSocketSetAddress(myipv4cfsock, sincfd);
-    CFRelease(sincfd);
+    if(CFSocketSetAddress(myipv4cfsock, sincfd) == kCFSocketSuccess){
     
-    
-    CFRunLoopSourceRef socketsource = CFSocketCreateRunLoopSource(
+        CFRunLoopSourceRef socketsource = CFSocketCreateRunLoopSource(
                                                                   kCFAllocatorDefault,
                                                                   myipv4cfsock,
                                                                   0);
-    CFRunLoopAddSource(
+        CFRunLoopAddSource(
                        CFRunLoopGetCurrent(),
                        socketsource,
                        kCFRunLoopDefaultMode);
+        
+        sourceRef = socketsource;
+        CFRelease(socketsource);
+    }else{
+        CFSocketInvalidate(myipv4cfsock);
+    }
+    
+    CFRelease(sincfd);
+    CFRelease(myipv4cfsock);
 }
 
 - (NSString *)getIPAddress {
@@ -298,7 +322,7 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
 
 -(void)meterUpdate:(NSTimer *)timer{
     CSSCentralManager *centralManager = [CSSCentralManager sharedService];
-
+    if(centralManager == nil) return;
     for(int i = 0;i<self.peripheralCount;i++){
         YMSCBPeripheral *per= [centralManager peripheralAtIndex:i];
         if([per isKindOfClass:CSSHRMSensor.class]){
