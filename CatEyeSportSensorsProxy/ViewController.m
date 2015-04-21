@@ -298,7 +298,6 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
 
 -(void)meterUpdate:(NSTimer *)timer{
     CSSCentralManager *centralManager = [CSSCentralManager sharedService];
-
     for(int i = 0;i<self.peripheralCount;i++){
         YMSCBPeripheral *per= [centralManager peripheralAtIndex:i];
         if([per isKindOfClass:CSSHRMSensor.class]){
@@ -337,6 +336,7 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error{
+    [central connectPeripheral:peripheral options:nil];
 }
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral{
