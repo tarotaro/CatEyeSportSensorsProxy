@@ -12,6 +12,7 @@
 #import "CSSHRMService.h"
 #import "CSSCSCSensor.h"
 #import "CSSCSCService.h"
+#import "YMSCBPeripheral.h"
 #import <CFNetwork/CFNetwork.h>
 #import <sys/socket.h>
 #import <netinet/in.h>
@@ -336,7 +337,13 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error{
-    [central connectPeripheral:peripheral options:nil];
+    CSSCentralManager *centralManager = [CSSCentralManager sharedService];
+    for(int j = 0;j<centralManager.ymsPeripherals.count;j++){
+        YMSCBPeripheral *ph = centralManager.ymsPeripherals[j];
+        if(ph.cbPeripheral == peripheral){
+            [ph connect];
+        }
+    }
 }
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral{
