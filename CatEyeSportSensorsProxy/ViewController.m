@@ -337,6 +337,10 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error{
+    self.peripheralCount--;
+    if(self.peripheralCount<0){
+        self.peripheralCount = 0;
+    }
     CSSCentralManager *centralManager = [CSSCentralManager sharedService];
     for(int j = 0;j<centralManager.ymsPeripherals.count;j++){
         YMSCBPeripheral *ph = centralManager.ymsPeripherals[j];
