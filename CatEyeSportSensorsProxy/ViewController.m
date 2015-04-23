@@ -185,6 +185,13 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
                                     forKey:(NSString *)kCFStreamPropertyShouldCloseNativeSocket];
         [selfClass.inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop]
                                          forMode:NSRunLoopCommonModes];
+        
+        selfClass.outputStream.delegate = selfClass;
+        [selfClass.outputStream setProperty:(id)kCFBooleanTrue
+        forKey:(NSString *)kCFStreamPropertyShouldCloseNativeSocket];
+        [selfClass.outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop]
+                                          forMode:NSRunLoopCommonModes];
+        
         [selfClass.inputStream open];
         [selfClass.outputStream open];
     }
@@ -242,6 +249,22 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
             }
             break;
         }
+            
+        case NSStreamEventHasSpaceAvailable:{
+            int value1,value2,value4;
+            float value3f;
+            uint8_t buffer[2048];
+            memset(buffer,0,2048);
+            
+            value1 = self.heartMeterValue;
+            value2 = self.rotationMeterValue;
+            value3f = self.speedMeterValue;
+            value4 = self.directionValue;
+            
+            sprintf(buffer,"%d,%d,%f,%d",value1,value2,value3f,value4);
+            [(NSOutputStream *)theStream write:(const uint8_t *)buffer maxLength:2048];
+            break;
+        }
         case NSStreamEventErrorOccurred:
             NSLog(@"Can not connect to the host!");
             break;
@@ -250,24 +273,14 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
             [theStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
             theStream = nil;
             break;
-        default:
+        default:    
             NSLog(@"Unknown event");
     }
     
     if(sendType == -1)return;
 
-    int value1,value2,value4;
-    float value3f;
-    uint8_t buffer[2048];
-    memset(buffer,0,2048);
-
-    value1 = self.heartMeterValue;
-    value2 = self.rotationMeterValue;
-    value3f = self.speedMeterValue;
-    value4 = self.directionValue;
+   
     
-    sprintf(buffer,"%d,%d,%f,%d",value1,value2,value3f,value4);
-    [self.outputStream write:(const uint8_t *)buffer maxLength:2048];
 
 }
 
