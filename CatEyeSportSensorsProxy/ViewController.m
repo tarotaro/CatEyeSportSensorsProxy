@@ -191,7 +191,7 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
         [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop]
                                          forMode:NSRunLoopCommonModes];
         
-        outputStream.delegate = selfClass;
+        //outputStream.delegate = selfClass;
         [outputStream setProperty:(id)kCFBooleanTrue
         forKey:(NSString *)kCFStreamPropertyShouldCloseNativeSocket];
         [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop]
@@ -200,8 +200,8 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
         [inputStream open];
         [outputStream open];
         
-        //[selfClass.inputStreams addObject:inputStream];
-        //[selfClass.outputStreams addObject:outputStream];
+        [selfClass.inputStreams addObject:inputStream];
+        [selfClass.outputStreams addObject:outputStream];
     }
     
 }
@@ -231,6 +231,7 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
     NSLog(@"stream event %lu", streamEvent); //this doesn't post in the log when stream opened...
     NSMutableData *ddata;
     NSInteger sendType = -1;
+    NSInteger socketNum = 0;
     switch (streamEvent) {
         case NSStreamEventOpenCompleted:
             NSLog(@"Stream opened");
@@ -243,7 +244,12 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
             uint8_t buffer[1024];
             int len;
             len = [(NSInputStream *)theStream read:buffer maxLength:1024];
-            
+            for(int j = 0;j<self.inputStreams.count;j++){
+                socketNum = j;
+                if(self.inputStreams[j] == theStream){
+                    break;
+                }
+            }
             NSLog(@"len:%d",len);
             if(len) {
                 [ddata appendBytes:(const void *)buffer length:len];
@@ -254,22 +260,6 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
             } else {
                 NSLog(@"No data.");
             }
-            break;
-        }
-            
-        case NSStreamEventHasSpaceAvailable:{
-            int value1,value2,value4;
-            float value3f;
-            uint8_t buffer[2048];
-            memset(buffer,0,2048);
-            
-            value1 = self.heartMeterValue;
-            value2 = self.rotationMeterValue;
-            value3f = self.speedMeterValue;
-            value4 = self.directionValue;
-            
-            sprintf(buffer,"%d,%d,%f,%d",value1,value2,value3f,value4);
-            [(NSOutputStream *)theStream write:(const uint8_t *)buffer maxLength:2048];
             break;
         }
         case NSStreamEventErrorOccurred:
@@ -283,6 +273,20 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
         default:    
             NSLog(@"Unknown event");
     }
+    
+    if(sendType == -1)return;
+    int value1,value2,value4;
+    float value3f;
+    uint8_t buffer[2048];
+    memset(buffer,0,2048);
+    
+    value1 = self.heartMeterValue;
+    value2 = self.rotationMeterValue;
+    value3f = self.speedMeterValue;
+    value4 = self.directionValue;
+    
+    sprintf(buffer,"%d,%d,%f,%d",value1,value2,value3f,value4);
+    [self.outputStreams[socketNum] write:(const uint8_t *)buffer maxLength:2048];
     
 }
 
