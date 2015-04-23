@@ -29,8 +29,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *scanButton;
 @property (nonatomic) NSInteger peripheralCount;
 
-@property (nonatomic,retain) NSInputStream * inputStream;
-@property (nonatomic,retain) NSOutputStream * outputStream;
+@property (nonatomic,retain) NSMutableArray * inputStreams;
+@property (nonatomic,retain) NSMutableArray * outputStreams;
 @property (nonatomic, retain) NSString *recvStr;
 @property (nonatomic) bool ConectFlag;
 
@@ -52,6 +52,9 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.inputStreams = [NSMutableArray array];
+    self.outputStreams =[NSMutableArray array];
     // Do any additional setup after loading the view, typically from a nib.
     CSSCentralManager *centralManager = [CSSCentralManager initSharedServiceWithDelegate:self];
     [self.scanButton addTarget:self action:@selector(scanButtonDown:) forControlEvents:UIControlEventTouchUpInside];
@@ -154,7 +157,7 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
     NSLog(@"type:::%lu",type);
     
     if (CFSocketIsValid(socket) == FALSE) {
-        NSLog(@"connection false");
+        //NSLog(@"connection false");
         selfClass.RecvStr = @"Socket Disconnect!!";
         CFSocketInvalidate(socket);
         CFRelease(socket);
@@ -168,32 +171,37 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
         NSLog(@"accepted. (s = %p, handle=%d)", socket, handle);
         CFReadStreamRef readStream = NULL;
         CFWriteStreamRef writeStream = NULL;
+        NSInputStream *inputStream;
+        NSOutputStream *outputStream;
         
         CFStreamCreatePairWithSocket(kCFAllocatorDefault, handle, &readStream, &writeStream);
         
         CFReadStreamSetProperty(readStream, kCFStreamPropertyShouldCloseNativeSocket, kCFBooleanTrue);
         CFWriteStreamSetProperty(writeStream, kCFStreamPropertyShouldCloseNativeSocket, kCFBooleanTrue);
         
-        selfClass.inputStream = (__bridge NSInputStream *)readStream;
-        selfClass.outputStream = (__bridge NSOutputStream *)writeStream;
+        inputStream = (__bridge NSInputStream *)readStream;
+        outputStream = (__bridge NSOutputStream *)writeStream;
         
         CFRelease(readStream);
         CFRelease(writeStream);
         
-        selfClass.inputStream.delegate = selfClass;
-        [selfClass.inputStream setProperty:(id)kCFBooleanTrue
+        inputStream.delegate = selfClass;
+        [inputStream setProperty:(id)kCFBooleanTrue
                                     forKey:(NSString *)kCFStreamPropertyShouldCloseNativeSocket];
-        [selfClass.inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop]
+        [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop]
                                          forMode:NSRunLoopCommonModes];
         
-        selfClass.outputStream.delegate = selfClass;
-        [selfClass.outputStream setProperty:(id)kCFBooleanTrue
+        outputStream.delegate = selfClass;
+        [outputStream setProperty:(id)kCFBooleanTrue
         forKey:(NSString *)kCFStreamPropertyShouldCloseNativeSocket];
-        [selfClass.outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop]
+        [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop]
                                           forMode:NSRunLoopCommonModes];
         
-        [selfClass.inputStream open];
-        [selfClass.outputStream open];
+        [inputStream open];
+        [outputStream open];
+        
+        //[selfClass.inputStreams addObject:inputStream];
+        //[selfClass.outputStreams addObject:outputStream];
     }
     
 }
@@ -219,7 +227,7 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
 }
 
 - (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent{
-    [self.inputStream setDelegate:self];
+    theStream.delegate = self;
     NSLog(@"stream event %lu", streamEvent); //this doesn't post in the log when stream opened...
     NSMutableData *ddata;
     NSInteger sendType = -1;
@@ -229,7 +237,6 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
             break;
         case NSStreamEventHasBytesAvailable:{
             NSLog(@"has bytes available!");
-            //if (theStream == inputStream) {
             NSLog(@"input Stream!!");
             ddata = [[NSMutableData alloc] init];
 
@@ -277,11 +284,6 @@ static void myHandleConnect(CFSocketRef socket, CFSocketCallBackType type, CFDat
             NSLog(@"Unknown event");
     }
     
-    if(sendType == -1)return;
-
-   
-    
-
 }
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
