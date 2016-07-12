@@ -193,6 +193,7 @@
 				555AB76D1AC459FD005F7A46 /* Frameworks */,
 				555AB76E1AC459FD005F7A46 /* Resources */,
 				F68AF30DF7EA5C9741D61E20 /* Copy Pods Resources */,
+				DADE42F163160FE73318CC9F /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,6 +233,7 @@
 				TargetAttributes = {
 					555AB76F1AC459FD005F7A46 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = F6293WE93E;
 					};
 					555AB7881AC459FD005F7A46 = {
 						CreatedOnToolsVersion = 6.1;
@@ -292,6 +294,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DADE42F163160FE73318CC9F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F68AF30DF7EA5C9741D61E20 /* Copy Pods Resources */ = {
@@ -449,9 +466,12 @@
 			baseConfigurationReference = 7E9848AADFAA27CC5F7EC872 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Taro Nakamura (69P3PUJUNP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CatEyeSportSensorsProxy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -460,9 +480,12 @@
 			baseConfigurationReference = D57F356EC9200D497B64C66A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Taro Nakamura (69P3PUJUNP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CatEyeSportSensorsProxy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

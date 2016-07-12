@@ -19,7 +19,7 @@ static CSSCentralManager *sharedCentralManager;
     if (sharedCentralManager == nil) {
         dispatch_queue_t queue = dispatch_queue_create("com.freeworks.cateyesportsproxy", 0);
         
-        NSArray *nameList = @[@"CATEYE_CSC", @"CATEYE_HRM"];
+        NSArray *nameList = @[@"CATEYE_CSC", @"MIO GLOBAL-FUSE"];
         sharedCentralManager = [[super allocWithZone:NULL] initWithKnownPeripheralNames:nameList
                                                                                   queue:queue
                                                                    useStoredPeripherals:YES
@@ -39,13 +39,11 @@ static CSSCentralManager *sharedCentralManager;
 }
 
 -(void)startScan{
-    
-    NSDictionary *options = @{ CBCentralManagerScanOptionAllowDuplicatesKey: @NO };
-    NSArray *servies = @[[CBUUID UUIDWithString:@"1816"],[CBUUID UUIDWithString:@"180D"]];
+    NSArray *servies = @[[CBUUID UUIDWithString:@"180D"],[CBUUID UUIDWithString:@"1816"]];
     
     __weak CSSCentralManager *this = self;
     [self scanForPeripheralsWithServices:servies
-                                 options:options
+                                 options:nil
                                withBlock:^(CBPeripheral *peripheral, NSDictionary *advertisementData, NSNumber *RSSI, NSError *error) {
                                    if (error) {
                                        NSLog(@"Something bad happened with scanForPeripheralWithServices:options:withBlock:");
@@ -67,25 +65,21 @@ static CSSCentralManager *sharedCentralManager;
     YMSCBPeripheral *yp = [self findPeripheral:peripheral];
     
     if (yp == nil) {
-        for (NSString *pname in self.knownPeripheralNames) {
-            if ([pname isEqualToString:peripheral.name]) {
-                if([pname isEqualToString:@"CATEYE_CSC"]){
-                    CSSCSCSensor *sensor = [[CSSCSCSensor alloc] initWithPeripheral:peripheral
-                                                                           central:self
-                                                                            baseHi:0xF000000004514000
-                                                                            baseLo:0xB000000000000000];
-                    [sensor connect];
-                    [self addPeripheral:sensor];
-                }else if([pname isEqualToString:@"CATEYE_HRM"]){
-                    CSSHRMSensor *sensor = [[CSSHRMSensor alloc] initWithPeripheral:peripheral
-                                                                            central:self
-                                                                             baseHi:0xF000000004514000
-                                                                             baseLo:0xB000000000000000];
-                    [sensor connect];
-                    [self addPeripheral:sensor];
-                }
-                break;
-            }
+        NSString *pname = peripheral.name;
+        if([pname isEqualToString:@"CATEYE_CSC"]){
+            CSSCSCSensor *sensor = [[CSSCSCSensor alloc] initWithPeripheral:peripheral
+                                                                    central:self
+                                                                     baseHi:0xF000000004514000
+                                                                     baseLo:0xB000000000000000];
+            [sensor connect];
+            [self addPeripheral:sensor];
+        }else if([pname isEqualToString:@"MIO GLOBAL-FUSE"]){
+            CSSHRMSensor *sensor = [[CSSHRMSensor alloc] initWithPeripheral:peripheral
+                                                                    central:self
+                                                                     baseHi:0xF000000004514000
+                                                                     baseLo:0xB000000000000000];
+            [sensor connect];
+            [self addPeripheral:sensor];
         }
     }
 }
