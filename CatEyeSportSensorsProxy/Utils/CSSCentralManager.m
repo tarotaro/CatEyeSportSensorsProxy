@@ -41,10 +41,10 @@ static CSSCentralManager *sharedCentralManager;
 -(void)startScan{
     
     NSDictionary *options = @{ CBCentralManagerScanOptionAllowDuplicatesKey: @NO };
-    
+    NSArray *servies = @[[CBUUID UUIDWithString:@"1816"],[CBUUID UUIDWithString:@"180D"]];
     
     __weak CSSCentralManager *this = self;
-    [self scanForPeripheralsWithServices:nil
+    [self scanForPeripheralsWithServices:servies
                                  options:options
                                withBlock:^(CBPeripheral *peripheral, NSDictionary *advertisementData, NSNumber *RSSI, NSError *error) {
                                    if (error) {
